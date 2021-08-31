@@ -2,6 +2,8 @@
 
 Express/ts ecommerce application deployed to AWS Elastic Beanstalk using AWS CDK
 
+Demo: http://ecommerce-app-eb-env-development.eba-tmwgesyf.us-east-1.elasticbeanstalk.com/
+
 ## Getting Started
 
 ### Adding Test Data From Dump

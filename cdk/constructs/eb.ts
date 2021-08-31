@@ -4,7 +4,7 @@ import * as iam from '@aws-cdk/aws-iam'
 import * as s3assets from '@aws-cdk/aws-s3-assets'
 import { environment, appConfig } from '../config'
 
-const { solutionStackName, dbName, dbPassword, dbUsername, ebZipArchivePath } = appConfig.eb
+const { solutionStackName, dbName, dbPassword, dbUsername, ebZipArchivePath, instancePort } = appConfig.eb
 
 export class EcommerceEBStack extends cdk.Stack {
   readonly ebEnv: eb.CfnEnvironment
@@ -29,9 +29,11 @@ export class EcommerceEBStack extends cdk.Stack {
       ['RDS_USERNAME', dbUsername],
       ['RDS_PASSWORD', dbPassword],
       ['RDS_DB_NAME', dbName],
-      ['PORT', '80'],
+      ['PORT', instancePort]
     ]
     // Issue deploying database: https://github.com/aws/aws-cdk/issues/7838
+    // Workaround is to configure in elasticbeanstalk console,
+    // alternative solution could be creating an RDS cdk construct and importing credentials
     const dbOptions = [
       ['DBEngine', 'postgres'],
       ['DBUser', dbUsername],
@@ -57,6 +59,11 @@ export class EcommerceEBStack extends cdk.Stack {
         namespace: 'aws:elasticbeanstalk:application',
         optionName: 'Application Healthcheck URL',
         value: '/',
+      },
+      {
+        namespace: 'aws:elb:listener',
+        optionName: 'InstancePort',
+        value: instancePort,
       },
       ...dbOptions.map(([optionName, value]) => ({
         namespace: 'aws:rds:dbinstance',

@@ -7,6 +7,7 @@ export const appConfig = {
     dbUsername: process.env.RDS_USERNAME || 'username',
     dbPassword: process.env.RDS_PASSWORD || 'password',
     dbName: process.env.RDS_DATABASE || 'ecommerceAppDB',
-    ebZipArchivePath: `${__dirname}/../../server`
+    ebZipArchivePath: `${__dirname}/../../server`,
+    instancePort: '3000'
   },
 } as const
