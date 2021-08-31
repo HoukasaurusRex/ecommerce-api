@@ -55,7 +55,7 @@ request body:
 ```js
 {
   "name": "jeff",
-  "companyId": 1
+  "CompanyId": 1
 }
 ```
 
@@ -216,7 +216,7 @@ request body:
 ```js
 {
   "name": "furby",
-  "companyId": 1
+  "CompanyId": 1
 }
 ```
 
@@ -296,7 +296,7 @@ request body:
 
 ```js
 {
-  "productId": 1234
+  "ProductId": 1
 }
 ```
 
@@ -306,8 +306,8 @@ response body:
 {
   "status": "success",
   "data": {
-    "sales": {
-      // ...sales data
+    "sale": {
+      // ...sale data
     }
   }
 }
@@ -321,9 +321,9 @@ response body:
 {
   "status": "success",
   "data": {
-    "sales": {
+    "sales": [{
       // ...sales data, includes products
-    }
+    }]
   }
 }
 ```
@@ -334,7 +334,7 @@ request body:
 
 ```js
 {
-  "productId": 1234
+  "ProductId": 2
 }
 ```
 
