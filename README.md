@@ -50,7 +50,7 @@ Customers belong to a Company
 
 request body:
 
-```json
+```js
 {
   "name": "jeff",
   "companyId": 1
@@ -59,7 +59,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -74,7 +74,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -89,7 +89,7 @@ response body:
 
 request body:
 
-```json
+```js
 {
   "name": "Joe Miller"
 }
@@ -97,7 +97,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -112,7 +112,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -131,7 +131,7 @@ Companys can have many customers and products
 
 request body:
 
-```json
+```js
 {
   "name": "bandai"
 }
@@ -139,7 +139,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -154,7 +154,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -169,7 +169,7 @@ response body:
 
 request body:
 
-```json
+```js
 {
   "name": "The Belt"
 }
@@ -177,7 +177,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -192,7 +192,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -211,7 +211,7 @@ Products belong to one company
 
 request body:
 
-```json
+```js
 {
   "name": "furby",
   "companyId": 1
@@ -220,7 +220,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -235,7 +235,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -250,7 +250,7 @@ response body:
 
 request body:
 
-```json
+```js
 {
   "name": "Warmbo"
 }
@@ -258,7 +258,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -273,7 +273,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -292,7 +292,7 @@ Sales belong to one product
 
 request body:
 
-```json
+```js
 {
   "productId": 1234
 }
@@ -300,7 +300,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -315,7 +315,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -330,7 +330,7 @@ response body:
 
 request body:
 
-```json
+```js
 {
   "productId": 1234
 }
@@ -338,7 +338,7 @@ request body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {
@@ -353,7 +353,7 @@ response body:
 
 response body:
 
-```json
+```js
 {
   "status": "success",
   "data": {

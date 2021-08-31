@@ -4,7 +4,7 @@ import * as iam from '@aws-cdk/aws-iam'
 import * as s3assets from '@aws-cdk/aws-s3-assets'
 import { environment, appConfig } from '../config'
 
-const { solutionStackName, dbName, dbPassword, dbUsername } = appConfig.eb
+const { solutionStackName, dbName, dbPassword, dbUsername, ebZipArchivePath } = appConfig.eb
 
 export class EcommerceEBStack extends cdk.Stack {
   readonly ebEnv: eb.CfnEnvironment
@@ -31,14 +31,17 @@ export class EcommerceEBStack extends cdk.Stack {
       ['RDS_DB_NAME', dbName],
       ['PORT', '80'],
     ]
+    // Issue deploying database: https://github.com/aws/aws-cdk/issues/7838
     const dbOptions = [
       ['DBEngine', 'postgres'],
       ['DBUser', dbUsername],
       ['DBPassword', dbPassword],
       ['DBInstanceClass', 'db.t2.micro'],
+      ['DBAllocatedStorage', '5'],
+      ['DBEngineVersion', '12']
     ]
-    // Option Settings: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html
-    // NodeJS Options: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-specific.html#command-options-nodejs
+
+    // General Option Settings: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options-general.html
     const optionSettingProperties: eb.CfnEnvironment.OptionSettingProperty[] = [
       {
         namespace: 'aws:autoscaling:launchconfiguration',
@@ -67,8 +70,9 @@ export class EcommerceEBStack extends cdk.Stack {
       })),
     ]
     const applicationName = `${prefix}-${environment}`
+
     const ebZipArchive = new s3assets.Asset(this, applicationName, {
-      path: `${__dirname}/../../server/dist`,
+      path: ebZipArchivePath,
     })
 
     const app = new eb.CfnApplication(this, `${prefix}-app-${environment}`, {

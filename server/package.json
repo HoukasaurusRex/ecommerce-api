@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "description": "A best practices express/ts server with clustering and socket.io",
   "scripts": {
-    "start": "node ./dist/server.js",
+    "start": "node dist/server.js",
     "postinstall": "npm run build",
     "build": "tsc",
     "dev": "ts-node-dev --respawn server.ts",
